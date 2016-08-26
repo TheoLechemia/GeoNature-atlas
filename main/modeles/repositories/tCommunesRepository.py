@@ -1,11 +1,9 @@
-from atlas import APP_DIR, BASE_DIR, manage
-import sys
+#! /usr/bin/python
+# -*- coding:utf-8 -*-
 import ast
-sys.path.insert(0, APP_DIR + '/modeles/entities')
-sys.path.insert(0, BASE_DIR)
-from tCommunes import LCommune
+from ..entities.tCommunes import LCommune
 from sqlalchemy import distinct
-from vmObservations import VmObservations
+from ..entities.vmObservations import VmObservations
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
 import ast

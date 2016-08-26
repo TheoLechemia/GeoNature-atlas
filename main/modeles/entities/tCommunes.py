@@ -3,10 +3,7 @@ from sqlalchemy import BigInteger, Boolean, Column, ForeignKey, Integer, String
 from geoalchemy2 import Geometry
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from atlas.manage import engine
-from atlas import BASE_DIR
-import sys
-sys.path.insert(0, BASE_DIR)
+
 
 
 Base = declarative_base()

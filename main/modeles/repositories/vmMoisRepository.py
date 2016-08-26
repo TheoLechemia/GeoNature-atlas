@@ -1,8 +1,7 @@
-from atlas import APP_DIR, BASE_DIR, manage
-import sys
-sys.path.insert(0, APP_DIR + '/modeles/entities')
-sys.path.insert(0, BASE_DIR)
-from vmMois import VmMois
+#! /usr/bin/python
+# -*- coding:utf-8 -*-
+
+from ..entities.vmMois import VmMois
 from sqlalchemy import distinct, func, extract
 from sqlalchemy.sql import text
 from sqlalchemy.orm import sessionmaker

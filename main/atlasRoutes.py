@@ -1,26 +1,23 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 import os
-import sys
+
 from flask import Flask, request, render_template, jsonify
 from werkzeug.wrappers import Response
-import config
+from configuration import config
 from modeles.repositories import vmTaxonsRepository, vmObservationsRepository, vmAltitudesRepository, \
  vmSearchTaxonRepository, vmMoisRepository, vmTaxrefRepository, vmCommunesRepository, vmObservationsMaillesRepository, vmMedias, vmCorTaxonAttribut, \
  vmTaxonsMostView
 from . import main
 import json
-APP_DIR = os.path.abspath(os.path.dirname(__file__))
-BASE_DIR = os.path.abspath(os.path.join(APP_DIR, os.pardir))
-sys.path.insert(0, BASE_DIR)
-from atlas import manage
+from . import utils
 
 
 
 @main.route('/' , methods=['GET', 'POST'])
 def index():
-    session = manage.loadSession()
-    connection = manage.engine.connect()
+    session = utils.loadSession()
+    connection = utils.engine.connect()
 
     listeTaxonsSearch = vmSearchTaxonRepository.listeTaxons(session)
     if config.AFFICHAGE_MAILLE:
@@ -44,8 +41,8 @@ def index():
 
 @main.route('/espece/<int:cd_ref>', methods=['GET', 'POST'])
 def ficheEspece(cd_ref):
-    session = manage.loadSession()
-    connection = manage.engine.connect()
+    session = utils.loadSession()
+    connection = utils.engine.connect()
 
     cd_ref = int(cd_ref)
     listeTaxonsSearch = vmSearchTaxonRepository.listeTaxons(session)
@@ -81,8 +78,8 @@ def ficheEspece(cd_ref):
 
 @main.route('/commune/<insee>', methods=['GET', 'POST'])
 def ficheCommune(insee):
-    session = manage.loadSession()
-    connection = manage.engine.connect()
+    session = utils.loadSession()
+    connection = utils.engine.connect()
 
     listTaxons = vmTaxonsRepository.getTaxonsCommunes(session, str(insee))
     commune = vmCommunesRepository.getCommuneFromInsee(connection, insee)
@@ -105,8 +102,8 @@ def ficheCommune(insee):
 
 @main.route('/liste/<cd_ref>', methods=['GET', 'POST'])
 def ficheRangTaxonomie(cd_ref):
-    session = manage.loadSession()
-    connection = manage.engine.connect()
+    session = utils.loadSession()
+    connection = utils.engine.connect()
 
     listTaxons = vmTaxonsRepository.getTaxonsChildsList(connection, cd_ref)
     referenciel = vmTaxrefRepository.getInfoFromCd_ref(session, cd_ref)

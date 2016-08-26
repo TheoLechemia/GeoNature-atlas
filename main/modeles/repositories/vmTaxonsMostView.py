@@ -1,10 +1,8 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
-from atlas import manage 
-from modeles import utils
+from .. import utils
 from sqlalchemy.sql import text
-import config
-from modeles import utils
+from ...configuration import config
 
 
 def mostViewTaxon(connection):

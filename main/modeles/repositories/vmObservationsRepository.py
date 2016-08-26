@@ -1,22 +1,18 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
-from atlas import APP_DIR, BASE_DIR, manage
-import sys
-sys.path.insert(0, APP_DIR + '/modeles/entities')
-sys.path.insert(0, BASE_DIR)
-from modeles import utils
-import config
-from vmObservations import VmObservations
-from tCommunes import LCommune
-from vmTaxref import VmTaxref
-from vmTaxons import VmTaxons
+
+from .. import utils
+from ...configuration import config
+from ..entities.vmObservations import VmObservations
+from ..entities.tCommunes import LCommune
+from ..entities.vmTaxref import VmTaxref
+from ..entities.vmTaxons import VmTaxons
 import tCommunesRepository
 from sqlalchemy import distinct, func, extract, desc
 from sqlalchemy.sql import text
 from sqlalchemy.orm import sessionmaker
 import ast
 from datetime import datetime
-import config
 import random
 
 

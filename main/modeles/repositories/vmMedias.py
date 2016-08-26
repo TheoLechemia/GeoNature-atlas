@@ -1,8 +1,9 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 
-from modeles import utils
-import config
+#from modele import utils
+from .. import utils
+from ...configuration import config
 
 
 from sqlalchemy.sql import text

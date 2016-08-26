@@ -1,14 +1,11 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
-from atlas import APP_DIR, BASE_DIR, manage
-import sys
-sys.path.insert(0, APP_DIR + '/modeles/entities')
-sys.path.insert(0, BASE_DIR)
-from modeles import utils
-import config
-from vmTaxref import VmTaxref
-from vmTaxons import VmTaxons
-from tBibTaxrefRang import TBibTaxrefRang
+
+from .. import utils
+from ...configuration import config
+from ..entities.vmTaxref import VmTaxref
+from ..entities.vmTaxons import VmTaxons
+from ..entities.tBibTaxrefRang import TBibTaxrefRang
 from sqlalchemy import distinct, func
 from sqlalchemy.sql import text
 from sqlalchemy.orm import sessionmaker

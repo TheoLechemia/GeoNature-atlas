@@ -1,9 +1,9 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
-from atlas.manage import engine
+from ..utils import engine
 from sqlalchemy import MetaData, Table
 import unicodedata
-import config
+from ..configuration import config
 
 
 class GenericTable:

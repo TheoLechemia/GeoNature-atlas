@@ -2,11 +2,7 @@
 from sqlalchemy import Column, Integer, MetaData, String, Table
 from sqlalchemy.orm import mapper
 from sqlalchemy.ext.declarative import declarative_base
-from atlas.manage import engine
-from atlas import BASE_DIR
-import sys
-sys.path.insert(0, BASE_DIR)
-
+from ...utils import engine
 
 
 metadata = MetaData()
