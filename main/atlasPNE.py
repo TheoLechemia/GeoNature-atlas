@@ -33,7 +33,7 @@ def index():
     customStat = vmObservationsRepository.genericStat(connection, config.RANG_STAT)
     customStatMedias = vmObservationsRepository.genericStatMedias(connection, config.RANG_STAT)
     configuration = {'STRUCTURE' : config.STRUCTURE, 'HOMEMAP': True, 'NB_LAST_OBS': config.NB_LAST_OBS, 'AFFICHAGE_MAILLE': config.AFFICHAGE_MAILLE, \
-    'URL_PHOTO': config.URL_MEDIAS, 'RANG_STAT_FR': config.RANG_STAT_FR, 'MAP': config.MAP}
+    'URL_PHOTO': config.URL_MEDIAS, 'RANG_STAT_FR': config.RANG_STAT_FR, 'MAP': config.MAP, 'URL_APPLICATION': config.URL_APPLICATION}
     
     connection.close()
     session.close()
@@ -68,7 +68,7 @@ def ficheEspece(cd_ref):
     observers = vmObservationsRepository.getObservers(connection, cd_ref)
     configuration = {'STRUCTURE' : config.STRUCTURE, 'LIMIT_FICHE_LISTE_HIERARCHY' : config.LIMIT_FICHE_LISTE_HIERARCHY,\
     'AFFICHAGE_MAILLE' : config.AFFICHAGE_MAILLE, 'ZOOM_LEVEL_POINT': config.ZOOM_LEVEL_POINT, 'LIMIT_CLUSTER_POINT': config.LIMIT_CLUSTER_POINT, 'FICHE_ESPECE': True, \
-    'URL_PHOTO': config.URL_MEDIAS, 'MAP': config.MAP}
+    'URL_PHOTO': config.URL_MEDIAS, 'MAP': config.MAP, 'URL_APPLICATION': config.URL_APPLICATION}
     
     connection.close()
     session.close()
@@ -93,12 +93,13 @@ def ficheCommune(insee):
     else:
         observations = vmObservationsRepository.lastObservationsCommune(connection, config.NB_LAST_OBS, insee)
 
-    configuration = {'STRUCTURE' : config.STRUCTURE, 'NB_LAST_OBS' : config.NB_LAST_OBS, 'AFFICHAGE_MAILLE': config.AFFICHAGE_MAILLE, 'MAP': config.MAP}
+    configuration = {'STRUCTURE' : config.STRUCTURE, 'NB_LAST_OBS' : config.NB_LAST_OBS, 'AFFICHAGE_MAILLE': config.AFFICHAGE_MAILLE, 'MAP': config.MAP, \
+    'URL_APPLICATION': config.URL_APPLICATION}
 
     session.close()
     connection.close()
 
-    return render_template('commune.html', listTaxons = listTaxons, referenciel = commune, communesSearch = communesSearch, observations = observations, \
+    return render_template('ficheCommune.html', listTaxons = listTaxons, referenciel = commune, communesSearch = communesSearch, observations = observations, \
     listeTaxonsSearch = listeTaxonsSearch,  configuration = configuration)
 
 
@@ -117,8 +118,8 @@ def ficheRangTaxonomie(cd_ref):
     connection.close()
     session.close()
 
-    configuration = {'STRUCTURE' : config.STRUCTURE, 'LIMIT_FICHE_LISTE_HIERARCHY' : config.LIMIT_FICHE_LISTE_HIERARCHY}
-    return render_template('listTaxons.html',  myType=myType ,listTaxons = listTaxons, referenciel = referenciel, communesSearch = communesSearch,\
+    configuration = {'STRUCTURE' : config.STRUCTURE, 'LIMIT_FICHE_LISTE_HIERARCHY' : config.LIMIT_FICHE_LISTE_HIERARCHY, 'URL_APPLICATION': config.URL_APPLICATION}
+    return render_template('ficheRang.html',  myType=myType ,listTaxons = listTaxons, referenciel = referenciel, communesSearch = communesSearch,\
         listeTaxonsSearch = listeTaxonsSearch, taxonomyHierarchy=taxonomyHierarchy, configuration=configuration)
 
 

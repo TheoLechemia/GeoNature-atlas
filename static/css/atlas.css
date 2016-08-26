@@ -1,3 +1,46 @@
+body {
+	background-color: #E3E7E8;
+}
+
+
 .navbar {
 	border: 0px !important;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	background: #81197f;
+}
+
+.navbar-brand {
+	color: white !important;
+}
+
+#sideBar{
+	
+}
+
+
+#sideBar{
+	width: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 0px;
+	margin-top: -20px;
+	padding-top: 15px;
+	background-color:#81197f;
+	height: 1000px;
+	text-align: center;
+	border-top: solid 1px;
+	border-color: white;
+}
+#sidebar_menu {
+	list-style: none;
+	padding-left: 0px;
+}
+
+#sidebar_menu li{
+	margin-bottom: 20px;
+}
+
+#sidebar_menu a {
+	color: white;
 }
